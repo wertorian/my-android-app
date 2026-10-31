@@ -18,15 +18,17 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    # 1. Генерируем Gradle Wrapper строго версии 8.5
+    # Официальный инструмент для правильной установки Gradle и кэширования
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    # Генерируем обертку версии 8.5 уже с помощью корректного окружения
     - name: Generate Gradle Wrapper
       run: gradle wrapper --gradle-version 8.5
 
-    # 2. Даем права на выполнение
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    # 3. ВАЖНО: Запускаем сборку ЧЕРЕЗ ./gradlew (а не просто gradle)
     - name: Build Debug APK
       run: ./gradlew assembleDebug
 
