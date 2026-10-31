@@ -13,12 +13,11 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up JDK 17
-      uses: setup-java@v4
+      uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
 
-    # Автоматически генерируем недостающие файлы обертки (включая jar и properties) перед сборкой
     - name: Generate Gradle Wrapper Files
       run: |
         gradle wrapper --gradle-version 8.5
