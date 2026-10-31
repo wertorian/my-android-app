@@ -18,14 +18,15 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    # Принудительно генерируем Gradle Wrapper
-    - name: Setup Gradle Wrapper
-      run: |
-        gradle wrapper --gradle-version 8.5
+    # 1. Генерируем Gradle Wrapper строго версии 8.5
+    - name: Generate Gradle Wrapper
+      run: gradle wrapper --gradle-version 8.5
 
+    # 2. Даем права на выполнение
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    # 3. ВАЖНО: Запускаем сборку ЧЕРЕЗ ./gradlew (а не просто gradle)
     - name: Build Debug APK
       run: ./gradlew assembleDebug
 
