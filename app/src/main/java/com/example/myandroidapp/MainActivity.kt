@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val textViewTitle = TextView(this).apply {
             text = "Привет, мир!"
             textSize = 24f
-            setTextColor(Color.RED)
+            setTextColor(Color.BLACK)
             gravity = Gravity.CENTER
         }
 
